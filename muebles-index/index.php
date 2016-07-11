@@ -60,7 +60,7 @@ include CLASSPATH . 'head.php';?>
     </div>
 
 </div>
-
+...............................................................................................................
     </div>
     <?php include CLASSPATH . 'footer_clientes.php';?>
 </body>
