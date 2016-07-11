@@ -1,0 +1,37 @@
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 500 /error.php
+
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+RewriteRule ^admin/ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^([^/.]+)$ categoria.php?c=$1
+RewriteRule ^([^/.]+)/$ categoria.php?c=$1
+
+RewriteRule ^([^/.]+)/pagina-([0-9]+)$ categoria.php?c=$1&page=$2
+RewriteRule ^([^/.]+)/pagina-([0-9]+)/$ categoria.php?c=$1&page=$2
+
+RewriteRule ^([^/.]+)/([^/.]+)-pagina-([0-9]+)$ articulos.php?c=$1&s=$2&page=$3
+RewriteRule ^([^/.]+)/([^/.]+)-pagina-([0-9]+)/$ articulos.php?c=$1&s=$2&page=$3
+
+RewriteRule ^([^/.]+)/([^/.]+)$ articulos.php?c=$1&s=$2
+RewriteRule ^([^/.]+)/([^/.]+)/$ articulos.php?c=$1&s=$2
+
+RewriteRule ^([^./]+)/([^./]+)/([^./]+)_([^./]+)_([^./]+)$ articulo.php?c=$1&s=$2&p=$3
+RewriteRule ^([^./]+)/([^./]+)/([^./]+)_([^./]+)_([^./]+)/$ articulo.php?c=$1&s=$2&p=$3
+
+<IfModule mod_speling.c>
+CheckSpelling On
+CheckCaseOnly On
+</IfModule>
+
+
